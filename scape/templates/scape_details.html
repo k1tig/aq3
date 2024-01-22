@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1> {{ scape.name }}</h1>
+        <br>
+        <div>
+            <ul>
+                <li>By: <a href="{% url 'profile-detail' scape.owner.pk %}">{{ scape.owner }}</li>
+                <li>Volume: {{ scape.volume }}</li>
+                <li>Filter: {{ scape.filtration }}</li>
+                <li>Lighting: {{ scape.lighting }}</li>
+                <li>CO2: {{ scape.co2 }}</li>
+                <li>Soil: {{  scape.soil }}</li>
+
+                {% if scape.hardscape.all  %}
+                <li>Hardscape: {% for hardscape in scape.hardscape.all %}<a href="#">{{hardscape}}</a>  {% endfor %} </li>
+                {% endif %}
+
+                {% if scape.plants.all %}
+                <li>Plants: {% for plant in scape.plants.all %}<a href="#">{{plant}}</a>  {% endfor %} </li>
+                {% endif %}
+
+                {% if scape.fish.all %}
+                <li>Fish: {% for fish in scape.fish.all %}<a href="#">{{fish}}</a>  {% endfor %} </li>
+                {% endif %}
+
+                {% if scape.invertebrates.all  %}
+                    <li>Invertebrates: {% for invert in scape.invertebrates.all %}<a href="#">{{invert}}</a>  {% endfor %} </li>
+                {% endif %}
+                
+            
+
+            </ul>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>
