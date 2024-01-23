@@ -16,7 +16,8 @@ class  ScapeDetailView(DetailView):
 
 def profile_view(request, pk):
     scape_obj = Scape.objects.filter(owner=pk)
-    plants = scape_obj.scape_plants.all()
+    plants = Scape.objects.get(id=1)
+    plants = plants.plants.all()
     profile_obj = Profile.objects.get(id=pk)
     
     
@@ -25,7 +26,7 @@ def profile_view(request, pk):
     context = {
         'pk' : pk,
         'name' : scape_obj[0].name,
-        'owner' : profile_obj.user_profile,
+        'profile' : profile_obj,
         'scapes' : scape_obj,
         'plants' : plants,
         

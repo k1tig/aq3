@@ -13,13 +13,17 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-       <h1>{{pk}}</h1>
-       <h1>{{name}}</h1>
-       <h1>{{owner}}</h1>
+        <h1>User: {{profile.user_profile}} </h1>
+        <h1>Country: {{profile.country}}</h1>
        
-       {%for x in scapes%} {{x.name}} {% endfor %}
-
-       {%for x in scapes%} {{x.plants}} {% endfor %} 
+        <h2>Scapes: </h2>
+        <ul>
+            {%for x in scapes%}
+                <li> {{x.name}} </li>
+            {% endfor %}
+        </ul>
+        <br>
+        <h3> Plant list: {%for x in plants%} <a href="#">{{x.name}}</a> {% endfor %} 
         
         <script src="" async defer></script>
     </body>
