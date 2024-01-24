@@ -16,14 +16,13 @@
 
         <h1>User: {{profile.user_profile}} </h1>
         <h1>Country: {{profile.country}}</h1>
-        
-       
         <h2>Scapes: </h2>
         <ul>
-            
-                <li> {{scapes.name}} </li>
-            
+            {%for i in scapes%}
+                <li> {{i.name}} </li>
+            {% endfor %}    
         </ul>
+
         <br>
         <h3> Plant list: 
             <ul>
