@@ -13,8 +13,10 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+
         <h1>User: {{profile.user_profile}} </h1>
         <h1>Country: {{profile.country}}</h1>
+        
        
         <h2>Scapes: </h2>
         <ul>
@@ -23,7 +25,9 @@
             {% endfor %}
         </ul>
         <br>
-        <h3> Plant list: {%for x in plants%} <a href="#">{{x.name}}</a> {% endfor %} 
+        <h3> Plant list: {%for x in plant_names%} <a href="#">{{x}}</a> {% endfor %} </h3>
+        
+        
         
         <script src="" async defer></script>
     </body>

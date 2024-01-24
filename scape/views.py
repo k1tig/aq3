@@ -1,6 +1,5 @@
 from django.views.generic import ListView, DetailView  
 from scape.models import Scape, Profile
-from flora.models import Plant
 from django.shortcuts import render
 
 
@@ -16,35 +15,24 @@ class  ScapeDetailView(DetailView):
 
 def profile_view(request, pk):
     scape_obj = Scape.objects.filter(owner=pk)
-    plants = Scape.objects.get(id=1)
-    plants = plants.plants.all()
     profile_obj = Profile.objects.get(id=pk)
+    
+    plant_names= []
+
+    for i in scape_obj:
+        plant_scape = i.plants.all()
+        for x in plant_scape:
+            plant_names.append(x.name)
     
     
    
    
     context = {
-        'pk' : pk,
-        'name' : scape_obj[0].name,
+        
         'profile' : profile_obj,
         'scapes' : scape_obj,
-        'plants' : plants,
-        
-
-
-
+        'plant_names' : plant_names,
     }
 
     
     return render(request, 'user_details.html', context)
-
-
-
-    
-
-    
-
-    
-    
-
-
