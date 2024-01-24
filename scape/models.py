@@ -28,7 +28,7 @@ class Scape(models.Model):
      hardscape = models.ManyToManyField(TankHardscape)
 
      
-     plants = models.ManyToManyField(Plant, blank = True, related_name='scape_plants')
+     plants = models.ManyToManyField(Plant, blank = True, related_name='plants')
      fish = models.ManyToManyField(Fish, blank= True)
      invertebrates = models.ManyToManyField(Invertebrate, blank = True)
 
