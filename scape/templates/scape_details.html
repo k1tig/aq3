@@ -13,7 +13,7 @@
         <br>
         <div>
             <ul>
-                <li>By: <a href="{% url 'profile-detail' scape.owner.pk %}">{{ scape.owner }}</li>
+                <li>By: <a href="{% url 'profile-detail' scape.owner.pk %}">{{ scape.owner.user_profile }}</li>
                 <li>Volume: {{ scape.volume }}</li>
                 <li>Filter: {{ scape.filtration }}</li>
                 <li>Lighting: {{ scape.lighting }}</li>
