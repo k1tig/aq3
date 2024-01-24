@@ -16,19 +16,21 @@
 
         <h1>User: {{profile.user_profile}} </h1>
         <h1>Country: {{profile.country}}</h1>
-        <h2>Scapes: </h2>
-        <ul>
-            {%for i in scapes%}
-                <li> {{i.name}} </li>
-            {% endfor %}    
-        </ul>
+        <h2>Scapes: 
+            <ul>
+                {% for i in scapes %}
+                    <li><a href="#">{{i.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </h2>
+        
 
         <br>
         <h3> Plant list: 
             <ul>
                 {%for x in plant_list%} 
                     <li> 
-                        <a href="#"> id={{x.id}} {{x}} </a>
+                        <a href="#">{{x}}</a>
                     </li> 
                 {% endfor %} 
             </ul>
