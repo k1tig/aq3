@@ -1,6 +1,7 @@
-from django.views.generic import ListView, DetailView  
+from django.views.generic import ListView, DetailView, FormView
 from scape.models import Scape, Profile
 from django.shortcuts import render
+from scape.forms import AddScape
 
 
 # Create your views here.
@@ -43,3 +44,7 @@ def profile_view(request, pk):
    
     
     return render(request, 'user_details.html', context)
+
+class AddScapeView(FormView):
+    template_name = 'add_scape.html'
+    form_class = AddScape
