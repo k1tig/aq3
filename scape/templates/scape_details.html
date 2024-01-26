@@ -10,35 +10,53 @@
     </head>
     <body>
         <h1> {{ scape.name }}</h1>
+        <h2> By: <a href="{% url 'profile-detail' scape.owner.pk %}">{{ scape.owner.user_profile }} </a> </h2>
         <br>
         <div>
-            <ul>
-                <li>By: <a href="{% url 'profile-detail' scape.owner.pk %}">{{ scape.owner.user_profile }}</li>
+            <h3> Tank Details </h3>
+            <ul> 
                 <li>Volume: {{ scape.volume }}</li>
                 <li>Filter: {{ scape.filtration }}</li>
                 <li>Lighting: {{ scape.lighting }}</li>
                 <li>CO2: {{ scape.co2 }}</li>
                 <li>Soil: {{  scape.soil }}</li>
+            </ul>
+            <br>
+
 
                 {% if scape.hardscape.all  %}
-                <li>Hardscape: {% for hardscape in scape.hardscape.all %}<a href="#">{{hardscape}}</a>  {% endfor %} </li>
+                    <h4>Hardscape:</h4> 
+                    <ul>{% for hardscape in scape.hardscape.all %}<li> <a href="#">{{hardscape}}</a> </li> {% endfor %} </ul>
                 {% endif %}
 
                 {% if scape.plants.all %}
-                <li>Plants: {% for plant in scape.plants.all %}<a href="#">{{plant}}</a>  {% endfor %} </li>
+                    <h4>Plants:</h4>
+                    <ul>{% for plant in scape.plants.all %}<li><a href="#">{{plant}}</a></li> {% endfor %} </ul>
                 {% endif %}
 
-                {% if scape.fish.all %}
-                <li>Fish: {% for fish in scape.fish.all %}<a href="#">{{fish}}</a>  {% endfor %} </li>
-                {% endif %}
+                {% if scape.fish.all or scape.invertebrates.all %}
+                    <h4>Livestock:</h4>
+                    <ul>
+                    {% if scape.fish.all %}
+                    <h5>Fish: 
+                    <ul>{% for fish in scape.fish.all %}<li><a href="#">{{fish}}</a></li>  {% endfor %}</ul>
+                    </h5> 
+                    {% endif %}
 
-                {% if scape.invertebrates.all  %}
-                    <li>Invertebrates: {% for invert in scape.invertebrates.all %}<a href="#">{{invert}}</a>  {% endfor %} </li>
+                    {% if scape.invertebrates.all  %}
+                    <h5>Invertebrates:
+                    <ul>{% for invert in scape.invertebrates.all %}<li><a href="#">{{invert}}</a></li> {% endfor %} </ul>
+                    </h5>
+                    </ul>
+                    {% endif %}
+                
                 {% endif %}
+                
+                
                 
             
 
-            </ul>
+            
         </div>
         <script src="" async defer></script>
     </body>

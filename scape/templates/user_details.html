@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -19,7 +16,7 @@
         <h2>Scapes: 
             <ul>
                 {% for i in scapes %}
-                    <li><a href="#">{{i.name}}</a></li>
+                    <li><a href="{% url 'scape-detail' i.pk %}">{{i.name}} </a></li>
                 {% endfor %}
             </ul>
         </h2>
@@ -30,7 +27,7 @@
             <ul>
                 {%for x in plant_list%} 
                     <li> 
-                        <a href="#">{{x}}</a>
+                        {{x}}
                     </li> 
                 {% endfor %} 
             </ul>
