@@ -13,19 +13,13 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <br>
-        <a href="{% url 'home'%}">Home</a>
-        <br>
-        <hr>
-        <h1> Scapes </h1>
-            <ul>
-                {% for scape in scape_list %}     
-                    <li> 
-                        <a href="{% url 'scape-detail' scape.pk %}"> {{scape.name}}</a>
-                        
-                    </li>   
-                {% endfor%}
-            </ul>
+        <h1> Login </h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+        </form>
+        
         <script src="" async defer></script>
     </body>
 </html>

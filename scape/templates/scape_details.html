@@ -9,7 +9,21 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1> {{ scape.name }}</h1>
+        <br>
+        <a href="{% url 'home'%}">Home</a>
+        <h1> Scape Details </h1>
+        <br>
+        <hr>
+        <h1> 
+            {{ scape.name }}
+        </h1>    
+            <small><a href="{% url 'scape-edit' scape.pk %}">edit</a>
+            <a href="{% url 'scape-delete' scape.pk %}">delete</a>
+            </small>
+        
+
+        
+
         <h2> By: <a href="{% url 'profile-detail' scape.owner.pk %}">{{ scape.owner.user_profile }} </a> </h2>
         <br>
         <div>
@@ -36,19 +50,28 @@
 
                 {% if scape.fish.all or scape.invertebrates.all %}
                     <h4>Livestock:</h4>
+
                     <ul>
                     {% if scape.fish.all %}
-                    <h5>Fish: 
-                    <ul>{% for fish in scape.fish.all %}<li><a href="#">{{fish}}</a></li>  {% endfor %}</ul>
-                    </h5> 
+                        <h5>Fish: 
+                        <ul>
+                            {% for fish in scape.fish.all %}
+                            <li><a href="#">{{fish}}</a></li>
+                            {% endfor %}
+                        </ul>
+                        </h5> 
                     {% endif %}
 
                     {% if scape.invertebrates.all  %}
-                    <h5>Invertebrates:
-                    <ul>{% for invert in scape.invertebrates.all %}<li><a href="#">{{invert}}</a></li> {% endfor %} </ul>
-                    </h5>
-                    </ul>
+                        <h5>Invertebrates:
+                        <ul>
+                            {% for invert in scape.invertebrates.all %}
+                                <li><a href="#">{{invert}}</a></li>
+                            {% endfor %}
+                        </ul>
+                        </h5>
                     {% endif %}
+                    </ul>
                 
                 {% endif %}
                 

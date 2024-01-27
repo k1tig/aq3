@@ -1,14 +1,26 @@
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from scape.models import Scape, Profile
 from django.shortcuts import render
-from scape.forms import AddScape
+from django.urls import reverse_lazy
 
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Create your views here.
+class CustomLoginView(LoginView):
+    template_name = 'base/login.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+    
 class ScapeView(ListView):
     model = Scape
     template_name = 'scape_list.html'
-
 
 class  ScapeDetailView(DetailView):
     model = Scape  
@@ -38,13 +50,23 @@ def profile_view(request, pk):
         'plant_list' : plant_list,
         
     }
-
-    
-
-   
     
     return render(request, 'user_details.html', context)
 
-class AddScapeView(FormView):
-    template_name = 'add_scape.html'
-    form_class = AddScape
+class ScapeCreate(LoginRequiredMixin, CreateView):
+    model = Scape
+    fields = '__all__'
+    template_name = 'scape_add.html'
+    success_url = reverse_lazy('scape')
+
+class ScapeEdit(UpdateView):
+    model =  Scape
+    fields = '__all__'
+    template_name = 'scape_edit.html'
+    success_url = reverse_lazy('scape')
+
+class ScapeDelete(DeleteView):
+    model = Scape
+    context_object_name = 'scape'
+    template_name = 'scape_delete.html'
+    success_url = reverse_lazy('scape')

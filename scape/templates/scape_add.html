@@ -5,9 +5,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/your-name/" method="post">
+    <br>
+    <a href="{% url 'home'%}">Home</a>
+    <br>
+    <hr>
+    <h1>Add Scape </h1>
+    <form action="" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="Submit">
     </form>
 
